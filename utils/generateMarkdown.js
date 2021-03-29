@@ -6,6 +6,9 @@ let testSection;
 let one;
 let two;
 let three;
+let covenant;
+let vidLink;
+let invite;
 
 
 function renderLicenseBadge(data) {
@@ -28,35 +31,34 @@ function renderLicenseBadge(data) {
 
 function renderLicenseSection(data) {
    if (data.license) {
-   let licenseFile = `${data.license.toLowerCase().split(' ').join('')}`
-   console.log(licenseFile);  
+   let licenseFile = `${data.license.toLowerCase().split(' ').join('')}` 
    let licenseText = `[${data.license}](./assets/licenses/${licenseFile}.md)`
       licenseSection = `## License
-Licensed under ${data.license}.
+This project is licensed under ${data.license}.
 For more info click ${licenseText}.` 
    } else {
       return ""
    }
 }
 function renderSections(data) {
-   if ((data.test!== undefined)&&(data.test!== "")) {
+   if (data.test) {
       testSection = `## Tests
-      ${data.test}`
+      ${data.testing}`
    } else {
       testSection= ""
    }
    if (data.githubOne!== undefined) {
-      one = ` * ${data.githubOne} `
+      one = ` * ${data.githubOne}: [https://github.com/${data.githubOne}](https://github.com/${data.githubOne})`
    } else {
       one= ""
    }
    if (data.githubTwo!== undefined) {
-      two = ` * ${data.githubTwo} `
+      two = ` * ${data.githubTwo}: [https://github.com/${data.githubTwo}](https://github.com/${data.githubTwo})`
    } else {
       two= ""
    }  
    if (data.githubThree!== undefined) {
-      three = ` * ${data.githubThree} `  
+      three = ` * ${data.githubThree}: [https://github.com/${data.githubThree}](https://github.com/${data.githubThree})`  
    } else {
       three= ""
    }
@@ -65,46 +67,56 @@ function renderSections(data) {
    } else {
       vidLink= ""
    }
+   if (data.contribution) {
+      invite = `${data.invite}`
+   } else {
+      invite =""
+   }
+   if (data.covenant) {
+      covenant = `Please adhere to the [Contributor Covenant Code of Conduct](./assets/licenses/contributor-covenant.md)`
+   } else {
+      covenant =""
+   }
 }
-
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
    renderLicenseSection(data)
    renderLicenseBadge(data)
    renderSections(data)
-  
-
+   
   return `# ${data.title} 
    ${badge}
   ===========================================
     
   ## Description 
-     ${data.description}   
+   ${data.description}   
   ## Table of Contents 
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Credits](#credits)
+  - [Contributions](#contributions)
   - [Tests](#tests)
   - [Questions](#questions)
   - [License](#license)
   ## Installation 
-     ${data.installation}
+   ${data.installation}
   ## Usage 
-     ${data.usage}
+   ${data.usage}
 ![Screenshot 1 of site](./assets/images/${data.filename})
 ${vidLink}
-  ## Credits 
-   * ${data.github}
+  ## Contributions 
+  This was created by:
+   * ${data.github}: [https://github.com/${data.github}](https://github.com/${data.github})
    ${one}
    ${two}
    ${three}
-      
+${invite}
+${covenant}       
   ${testSection} 
   ## Questions 
-If you have questions or feedback, please contact via ${data.github} at [https://github.com/${data.github}](https://github.com/${data.github}) or via email at ${data.email}.
+   If you have questions or feedback, please contact via ${data.github} at [https://github.com/${data.github}](https://github.com/${data.github}) or via email at ${data.email}.
 ${licenseSection}`
-    
+
 }
 
 module.exports = generateMarkdown;

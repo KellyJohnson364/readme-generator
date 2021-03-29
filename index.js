@@ -75,23 +75,28 @@ const questions= () => {
     },
     {
       type:'confirm', 
-      name:'contributorsTres', 
-      message:'Are there additional contributors?', when:function(data){return data.contributorsMore}
+      name:'contribution', 
+      message:'Would you like to invite others to contribute?',
     },
     {
-      type:'input', 
-      name:'githubThree', 
-      message:'GitHub Username of contributor', when:function(data){return data.contributorsTres}
-    },
-    {
-      type: 'input',
-      message: 'What are your contribution guidelines?',
-      name: 'contribution',
+      type:'confirm', 
+      name:'covenant', 
+      message:'Would you like to reference the Contributor Covenant Code of Conduct?', when:function(data){return data.contribution},
     },
     {
       type: 'input',
-      message: 'List any tests and instructions if applicable. Enter through, if not.',
+      message: 'What would you like others to know about contributing?', when:function(data){return data.contribution},
+      name: 'invite',
+    },
+    {
+      type: 'confirm',
+      message: 'Would you like to add a Test section?',
       name: 'test',
+    },
+    {
+      type: 'input',
+      message: 'List Tests and instructions on how to run them', when:function(data){return data.test},
+      name: 'testing',
     },
     {
       type: 'input',
