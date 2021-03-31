@@ -45,7 +45,7 @@ const questions= () => {
     },
     {
       type: 'input',
-      message: 'What is the file name of your video? (Place file in images folder in assets folder)',
+      message: 'What is the url for your video?',
       name: 'videoname', when:function(data){return data.video}
     },
     {
@@ -112,18 +112,17 @@ const questions= () => {
     
   ])
 }
-  
-// TODO: Create a function to write README file
 
 
 // TODO: Create a function to initialize app
 //function init() {}
 const init = () => {
   questions()
-  .then((data) => {
-    const readmeContent = generateMarkdown(data);
   
-    fs.writeFile('README.md', readmeContent, (err) =>
+  .then((data) => {
+    const readmeContent = generateMarkdown(data)
+    const newTitle = `${data.title.toLowerCase().split(' ').join('-')}.md`;
+    fs.writeFile(newTitle, readmeContent, (err) =>
       err ? console.log(err) : console.log('Successfully created README.md!')
     );
   });

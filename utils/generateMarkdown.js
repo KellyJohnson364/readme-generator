@@ -1,4 +1,5 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
+
+
 
 let badge;
 let licenseSection;
@@ -8,9 +9,10 @@ let two;
 let three;
 let covenant;
 let vidLink;
+let screenLink;
 let invite;
 
-
+// Function to create badge depending of license chosen
 function renderLicenseBadge(data) {
    if (data.license == 'Apache 2.0') {
       badge = `[![Apache 2.0](https://img.shields.io/badge/License-APACHE-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)`  
@@ -27,7 +29,7 @@ function renderLicenseBadge(data) {
    } 
 }
 
-// TODO: Create a function that returns the license section of README
+//function that returns the license section of README
 
 function renderLicenseSection(data) {
    if (data.license) {
@@ -40,6 +42,8 @@ For more info click ${licenseText}.`
       return ""
    }
 }
+// Function to render sections depending on user answers
+
 function renderSections(data) {
    if (data.test) {
       testSection = `## Tests
@@ -63,7 +67,7 @@ function renderSections(data) {
       three= ""
    }
    if (data.videoname!== undefined) {
-      vidLink = `![Video 1 of site](./assets/images/${data.videoname})`  
+      vidLink = `View this [video](${data.videoname}) as an example. `
    } else {
       vidLink= ""
    }
@@ -77,20 +81,26 @@ function renderSections(data) {
    } else {
       covenant =""
    }
+   if (data.screenshot) {
+      screenLink = `![Screenshot 1 of site](./assets/images/${data.filename})`
+   } else {
+      screenLink =""
+   }
 }
 
-// TODO: Create a function to generate markdown for README
+// function to generate markdown for README
 function generateMarkdown(data) {
    renderLicenseSection(data)
    renderLicenseBadge(data)
    renderSections(data)
-   
+  
+
   return `# ${data.title} 
    ${badge}
   ===========================================
     
   ## Description 
-   ${data.description}   
+      ${data.description}  
   ## Table of Contents 
   - [Installation](#installation)
   - [Usage](#usage)
@@ -99,22 +109,31 @@ function generateMarkdown(data) {
   - [Questions](#questions)
   - [License](#license)
   ## Installation 
-   ${data.installation}
+      ${data.installation}
   ## Usage 
-   ${data.usage}
-![Screenshot 1 of site](./assets/images/${data.filename})
+      ${data.usage}
+
+
+${screenLink}
+
+
 ${vidLink}
+
+
   ## Contributions 
-  This was created by:
-   * ${data.github}: [https://github.com/${data.github}](https://github.com/${data.github})
-   ${one}
-   ${two}
-   ${three}
-${invite}
-${covenant}       
+      This was created by:
+         * ${data.github}: [https://github.com/${data.github}](https://github.com/${data.github})
+            ${one}
+            ${two}
+            ${three}
+         ${invite}
+         ${covenant}  
+
   ${testSection} 
+
   ## Questions 
-   If you have questions or feedback, please contact via ${data.github} at [https://github.com/${data.github}](https://github.com/${data.github}) or via email at ${data.email}.
+If you have questions or feedback, please contact ${data.github} at [https://github.com/${data.github}](https://github.com/${data.github}) or via email at ${data.email}.
+
 ${licenseSection}`
 
 }
