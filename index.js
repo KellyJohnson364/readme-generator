@@ -1,9 +1,9 @@
-// TODO: Include packages needed for this application
+// packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 
-// TODO: Create an array of questions for user input
+// Creates an array of questions for user input
 
 const questions= () => {
   return inquirer.prompt([
@@ -114,11 +114,11 @@ const questions= () => {
 }
 
 
-// TODO: Create a function to initialize app
-//function init() {}
+//function to initialize app
+
 const init = () => {
   questions()
-  
+//generates readme file  
   .then((data) => {
     const readmeContent = generateMarkdown(data)
     const newTitle = `${data.title.toLowerCase().split(' ').join('-')}.md`;
@@ -128,7 +128,5 @@ const init = () => {
   });
 }
 // Function call to initialize app
-//init();
-
 
 init();
