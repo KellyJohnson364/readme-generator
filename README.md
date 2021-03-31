@@ -24,17 +24,15 @@ View this [video](https://drive.google.com/file/d/1AgsgmhXtREremi7oiT917MNhXSrM4
 
 
   ## Contributions 
-      This was created by:
-         * kellyjohnson364: [https://github.com/kellyjohnson364](https://github.com/kellyjohnson364)
+This was created by:
+* kellyjohnson364: [https://github.com/kellyjohnson364](https://github.com/kellyjohnson364)
             
             
             
-         Please feel free to contribute to this project.
+Please feel free to contribute to this project.
            
 
-   
-
-  ## Questions 
+## Questions 
 If you have questions or feedback, please contact kellyjohnson364 at [https://github.com/kellyjohnson364](https://github.com/kellyjohnson364) or via email at kj3641402@gmail.com.
 
 ## License

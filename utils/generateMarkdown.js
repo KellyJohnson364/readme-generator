@@ -122,7 +122,7 @@ ${vidLink}
 
   ## Contributions 
       This was created by:
-         * ${data.github}: [https://github.com/${data.github}](https://github.com/${data.github})
+* ${data.github}: [https://github.com/${data.github}](https://github.com/${data.github})
             ${one}
             ${two}
             ${three}
