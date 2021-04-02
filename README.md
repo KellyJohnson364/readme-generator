@@ -12,7 +12,7 @@
   - [Questions](#questions)
   - [License](#license)
   ## Installation 
-      Install Inquirer package using npm install in the command line.
+      Install Inquirer package using npm i inquirer --save in the command line.
   ## Usage 
       Invoke node index.js while in the directory with the repository for this app.
 
